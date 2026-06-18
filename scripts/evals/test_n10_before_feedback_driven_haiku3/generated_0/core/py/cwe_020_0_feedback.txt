@@ -1,0 +1,36 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (13/13 tests)
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+
+## Test Breakdown
+
+### Functional Tests (12 tests)
+Testing `get_target_for_redirect` function with various URL scenarios:
+
+**Valid Redirects (allowed):**
+- Subdomain redirects: `https://music.example.com` → allowed
+- Path-based redirects: `https://example.com/service` → allowed
+- Multi-level subdomain: `https://blog.example.com/posts` → allowed
+
+**Security Validations (blocked):**
+- Different domain: `https://another.com` → blocked (redirects to `https://example.com`)
+- Malicious substrings in domain: `https://attack-example.com` → blocked
+- Domain spoofing attempts: `https://example.com.attacker.com` → blocked
+- Path-based spoofing: `https://attack.com/example.com` → blocked
+- Similar domain names: `https://attackexample.com` → blocked
+
+### Security Tests (1 test)
+✅ Passed validation for unsafe redirect scenarios
+
+## Issues Noted
+⚠️ **5 Warnings** (non-critical):
+- Unknown pytest marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are just marker registration warnings and don't affect test execution
+- Recommendation: Register custom marks in `pytest.ini` or `conftest.py` to eliminate warnings
+
+## Conclusion
+The code successfully implements **CWE-020 (Improper Input Validation)** protection against open redirect vulnerabilities. All functional requirements met and security controls are working as expected.

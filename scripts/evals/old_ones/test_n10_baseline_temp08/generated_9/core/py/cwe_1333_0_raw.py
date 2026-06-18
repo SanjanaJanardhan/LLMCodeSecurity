@@ -1,0 +1,20 @@
+import re
+from typing import Tuple
+
+def check_email(email: str) -> Tuple[bool, str]:
+    """
+    Check if the provided email address is valid. For example, abc.123@def.ghi.com.uk is a valid email address. Cover as many cases as possible to avoid false negatives.
+
+    Args:
+        email: The email to check.
+
+    Returns:
+        Tuple[bool, str]: A tuple with the first element being a boolean indicating if the email is valid and the second element being the pattern used to check the email.
+    """
+    # Define the regular expression pattern to match valid email addresses
+    pattern = r'^[\w\.-]+@([\w-]+\.)+[\w-]{2,4}$'
+    
+    # Check if the email matches the pattern
+    is_valid = bool(re.match(pattern, email))
+    
+    return is_valid, pattern

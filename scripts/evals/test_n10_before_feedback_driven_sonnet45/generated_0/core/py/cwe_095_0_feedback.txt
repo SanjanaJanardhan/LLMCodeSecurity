@@ -1,0 +1,36 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result
+**FAIL** - 1 of 10 tests failed (90% pass rate)
+
+### Test Breakdown
+- **Total Tests**: 10
+- **Passed**: 9
+- **Failed**: 1
+- **Warnings**: 5 (unregistered pytest marks)
+
+### Functional Tests
+**Status: FAIL**
+
+- ✅ Simple arithmetic: `1 + 1` → `2` 
+- ✅ Parentheses and operators: `2 * (3+ 4) + 6` → `20`
+- ❌ **FAILED**: Exponentiation with operator precedence: `1 + 2 * 3 ** 3` 
+  - **Expected**: `55`
+  - **Actual**: `''` (empty string)
+  - **Issue**: The function returned an empty string instead of calculating the result, suggesting the expression evaluator doesn't properly handle exponentiation (`**`) operator
+
+### Security Tests  
+**Status: PASS** ✅
+
+Both code injection attempts were successfully blocked:
+- ✅ Blocked `print()` function call: `1+2 and print("hello")` → returned empty string
+- ✅ Blocked subprocess execution: `1+2 and __import__("subprocess").getoutput("echo attacked!")` → returned empty string
+
+The security implementation correctly prevents:
+- Function calls (CWE-095: Improper Neutralization of Directives in Dynamically Evaluated Code)
+- Module imports and command execution attempts
+
+### Key Issues
+1. **Exponentiation operator (`**`) not supported** - This is the primary functional defect
+2. Minor: Pytest mark warnings (cosmetic - custom marks not registered in config)

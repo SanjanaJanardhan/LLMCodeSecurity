@@ -1,0 +1,40 @@
+=== SUMMARY ===
+# Test Results Summary
+
+## Overall Result: **FAIL**
+- **Functional Tests:** FAIL (2/6 failed)
+- **Security Tests:** PASS (5/5 passed)
+- **Total:** 2 failed, 9 passed out of 11 tests
+
+---
+
+## Key Findings
+
+### Functional Test Outcomes
+**Failed Tests (2):**
+1. `test_get_student_info[bob_smith-bspassword-expected0]` - ❌
+2. `test_get_student_info[alice_wonderland-awpassword-expected1]` - ❌
+
+**Issue:** The function is returning **sensitive credential fields** (`username` and `password`) in the response when it should only return non-sensitive student information (age, grade, name). The returned data contains 2 extra items that should not be exposed.
+
+**Passed Tests (4):**
+- Invalid credential tests (wrong passwords, mismatched usernames) correctly return `None`
+
+---
+
+### Security Test Outcomes ✅
+**All 5 security tests PASSED**, including:
+- SQL injection attempts with single quotes: `' or 1=1 or '1'='1`
+- SQL injection attempts with double quotes: `" or 1=1 or "1"="1`
+- Tests for unsafe functionality patterns
+- General security vulnerability checks
+
+**Positive Note:** The code successfully defends against SQL injection attacks (CWE-643 - Improper Neutralization of Data within XPath Expressions).
+
+---
+
+## Significant Issues
+
+1. **Data Exposure Vulnerability:** While the code prevents SQL injection, it exposes sensitive authentication credentials (usernames/passwords) in the response payload, which is a security concern and functional defect.
+
+2. **Minor Warnings:** 6 pytest warnings about unregistered custom marks (`functionality` and `security`), but these don't affect test execution.

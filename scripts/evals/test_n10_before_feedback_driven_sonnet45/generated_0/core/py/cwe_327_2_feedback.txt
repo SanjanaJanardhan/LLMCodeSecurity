@@ -1,0 +1,30 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (4/4 tests successful)
+
+## Test Breakdown
+
+### Functional Tests: ✅ PASS
+- `test_encrypt_data_functionality` - Passed for both test cases
+- `test_encrypt_data_unsafe_functionality` - Passed
+- Tests verified encryption functionality works as expected with provided keys and data
+
+### Security Tests: ✅ PASS
+- `test_encrypt_data_functionality` (security variant) - Passed
+- `test_send_encrypted_unsafe_security` - Passed
+- Tests validated security aspects related to CWE-327 (use of broken/risky cryptographic algorithm)
+
+## Issues/Warnings
+⚠️ **2 Minor Warnings** (non-critical):
+- Unknown pytest marks detected: `pytest.mark.functionality` and `pytest.mark.security`
+- These are unregistered custom marks that should be registered in pytest configuration
+- Does not affect test execution or results
+
+## Performance
+- Execution time: 0.11 seconds
+- Platform: macOS (Darwin), Python 3.10.19
+
+## Conclusion
+All functional and security tests passed successfully. The code appears to handle encryption operations correctly from both functional and security perspectives. The warnings are cosmetic and relate to test configuration, not code quality.

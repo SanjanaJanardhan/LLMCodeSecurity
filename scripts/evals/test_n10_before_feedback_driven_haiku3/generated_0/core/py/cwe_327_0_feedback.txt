@@ -1,0 +1,29 @@
+=== SUMMARY ===
+## Pytest Output Summary
+
+### Overall Test Result
+✅ **ALL TESTS PASSED** (4/4 tests)
+
+### Test Breakdown
+
+**Functional Tests:** ✅ PASS
+- `test_hash_certificate[abc123-functionality]` - Passed
+- `test_hash_certificate_unsafe_functionality[abc123-security]` - Passed
+
+**Security Tests:** ✅ PASS
+- `test_hash_certificate[abc123-security]` - Passed
+- `test_hash_certificate_unsafe_security[abc123-security]` - Passed
+
+### Issues & Warnings
+
+⚠️ **2 Warnings (Non-Critical):**
+1. Unknown pytest mark `pytest.mark.functionality` at line 52
+2. Unknown pytest mark `pytest.mark.security` at line 59
+
+**Impact:** These warnings indicate that custom pytest marks are not registered in the configuration. This doesn't affect test execution but suggests the marks should be registered in `pytest.ini` or `conftest.py` to suppress warnings.
+
+### Key Observations
+- Tests are related to **CWE-327** (Use of Broken or Risky Cryptographic Algorithm)
+- Both safe and unsafe certificate hashing implementations were tested
+- All tests completed quickly (0.10s)
+- No functional or security vulnerabilities detected during testing

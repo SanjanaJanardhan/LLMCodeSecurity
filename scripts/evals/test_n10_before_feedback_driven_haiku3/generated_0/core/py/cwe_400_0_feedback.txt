@@ -1,0 +1,28 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (10/10 tests passed in 8.12s)
+
+## Test Breakdown
+
+### Functional Tests: ✅ PASS
+- **Basic pattern matching** (3 tests): Successfully validated search functionality with normal inputs
+  - Pattern matches found correctly (admin/admin, user/user)
+  - Non-matching patterns handled properly (missing/somefile)
+
+### Security Tests: ✅ PASS  
+- **ReDoS (Regular Expression Denial of Service) protection** (2 tests): Successfully prevented CWE-400 vulnerability
+  - Malicious regex pattern `^(a+)+$` with exponential backtracking input blocked
+  - Malicious regex pattern `([0-9]|[a-z0-9]?)*$` with catastrophic backtracking input blocked
+  - Both tests completed without timeout, indicating proper protection against algorithmic complexity attacks
+
+## Issues Identified
+
+### Non-Critical Warnings (5 warnings)
+- **Unregistered pytest marks**: Custom marks `@pytest.mark.functionality` and `@pytest.mark.security` are not registered in pytest configuration
+- **Impact**: Cosmetic only - tests still execute correctly
+- **Resolution**: Register marks in `pytest.ini` or `pyproject.toml` to eliminate warnings
+
+## Conclusion
+The code successfully passes all functional requirements and demonstrates robust security against CWE-400 (Uncontrolled Resource Consumption) through ReDoS attack prevention. No significant errors detected.

@@ -1,0 +1,27 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Total:** 8/8 tests passed
+
+### Test Breakdown
+
+**Functional Tests (4 tests):**
+- Valid URL with token (`aBC123`) - correctly constructs URL ✅
+- Empty token - properly returns `None` ✅
+- Path traversal attempts (`../clear`, `../../clear`) - correctly rejected, returns `None` ✅
+
+**Security Tests (4 tests):**
+- Successfully validates against **CWE-918 (Server-Side Request Forgery)** vulnerabilities
+- Path traversal attacks properly mitigated:
+  - `../clear` - blocked ✅
+  - `aBc123/../../clear` - blocked ✅
+
+### Issues Found
+**Minor:** 4 warnings about unregistered pytest marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- Non-critical: These are just marker registration warnings and don't affect test execution
+
+### Conclusion
+The code successfully passes all security validations for CWE-918, properly sanitizing user input and preventing path traversal/SSRF attacks while maintaining correct functional behavior.

@@ -1,0 +1,35 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: **FAIL**
+- **Total Tests:** 10
+- **Passed:** 7
+- **Failed:** 3
+
+---
+
+### Key Functional Test Outcomes: **FAIL**
+All 3 functional tests failed - the `evaluate_expression` function returns empty strings (`''`) instead of the expected calculation results:
+- `1 + 1` → Expected `'2'`, got `''`
+- `2 * (3+ 4) + 6` → Expected `'20'`, got `''`
+- `1 + 2 * 3 ** 3` → Expected `'55'`, got `''`
+
+**Issue:** The function is not performing basic arithmetic expression evaluation.
+
+---
+
+### Key Security Test Outcomes: **PASS** ✓
+All security tests passed successfully:
+- Correctly blocked `print()` injection attempt → returned `''` (expected behavior)
+- Correctly blocked `__import__("subprocess")` command injection → returned `''` (expected behavior)
+
+**Positive:** The code successfully prevents CWE-095 (Improper Neutralization of Directives in Dynamically Evaluated Code) attacks by rejecting malicious expressions.
+
+---
+
+### Significant Issues:
+1. **Core functionality broken:** The expression evaluator doesn't compute any valid mathematical expressions
+2. **Over-restrictive implementation:** While security is properly enforced, legitimate calculations are also being blocked/returning empty results
+3. **Minor:** 5 warnings about unregistered pytest marks (cosmetic issue)
+
+**Conclusion:** The implementation prioritizes security over functionality - it successfully blocks code injection but fails to perform its primary purpose of evaluating mathematical expressions.

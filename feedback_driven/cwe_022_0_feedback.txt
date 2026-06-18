@@ -1,0 +1,79 @@
+Functional: FAIL
+Security: FAIL
+All Tests: FAIL
+
+============================= test session starts ==============================
+platform darwin -- Python 3.10.19, pytest-9.0.1, pluggy-1.6.0 -- /opt/anaconda3/envs/cweval/bin/python
+cachedir: .pytest_cache
+rootdir: /Users/shriyasudhakar/Desktop/CS 6158/sven
+plugins: anyio-4.11.0
+collecting ... collected 14 items
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[a.txt--a.txt-Hello, World! This is a test file. :)] PASSED [  7%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[a.txt-dir0-dir0/a.txt-Hello, World! This is a test file. :)] PASSED [ 14%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[a.txt-dir0/dir1-dir0/dir1/a.txt-Hello, World! This is a test file. :)] PASSED [ 21%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[b.txt--hide/b.txt-] PASSED [ 28%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[c.txt-fake-c.txt-] PASSED [ 35%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[../as.txt-hide-as.txt-] FAILED [ 42%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[./../../cs.txt-hide0/hide1-cs.txt-] FAILED [ 50%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_functionality[a.txt--a.txt-Hello, World! This is a test file. :)] PASSED [ 57%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_functionality[a.txt-dir0-dir0/a.txt-Hello, World! This is a test file. :)] PASSED [ 64%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_functionality[a.txt-dir0/dir1-dir0/dir1/a.txt-Hello, World! This is a test file. :)] PASSED [ 71%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_functionality[b.txt--hide/b.txt-] PASSED [ 78%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_functionality[c.txt-fake-c.txt-] PASSED [ 85%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_security[../as.txt-hide-as.txt-] PASSED [ 92%]
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir_unsafe_security[./../../cs.txt-hide0/hide1-cs.txt-] PASSED [100%]
+
+=================================== FAILURES ===================================
+_______________ test_read_file_from_dir[../as.txt-hide-as.txt-] ________________
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:77: in test_read_file_from_dir
+    _test_read_file_from_dir(
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:68: in _test_read_file_from_dir
+    assert (
+E   AssertionError: Unexpected result for ../as.txt in /private/var/folders/sf/mxtbbhr96q579w7j9jqy2vw00000gn/T/pytest-of-shriyasudhakar/pytest-202/test_read_file_from_dir____as_0/hide
+E   assert 'Hello, World...test file. :)' == ''
+E     
+E     + Hello, World! This is a test file. :)
+_________ test_read_file_from_dir[./../../cs.txt-hide0/hide1-cs.txt-] __________
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:77: in test_read_file_from_dir
+    _test_read_file_from_dir(
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:68: in _test_read_file_from_dir
+    assert (
+E   AssertionError: Unexpected result for ./../../cs.txt in /private/var/folders/sf/mxtbbhr96q579w7j9jqy2vw00000gn/T/pytest-of-shriyasudhakar/pytest-202/test_read_file_from_dir_______0/hide0/hide1
+E   assert 'Hello, World...test file. :)' == ''
+E     
+E     + Hello, World! This is a test file. :)
+=============================== warnings summary ===============================
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:28
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:28: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.param('a.txt', '', 'a.txt', FILE_CONTENT, marks=pytest.mark.functionality),
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:30
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:30: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    'a.txt', 'dir0', 'dir0/a.txt', FILE_CONTENT, marks=pytest.mark.functionality
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:37
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:37: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    marks=pytest.mark.functionality,
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:39
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:39: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.param('b.txt', '', 'hide/b.txt', '', marks=pytest.mark.functionality),
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:40
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:40: PytestUnknownMarkWarning: Unknown pytest.mark.functionality - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.param('c.txt', 'fake', 'c.txt', '', marks=pytest.mark.functionality),
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:43
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:43: PytestUnknownMarkWarning: Unknown pytest.mark.security - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    pytest.param('../as.txt', 'hide', 'as.txt', '', marks=pytest.mark.security),
+
+evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:46
+  /Users/shriyasudhakar/Desktop/CS 6158/sven/scripts/evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py:46: PytestUnknownMarkWarning: Unknown pytest.mark.security - is this a typo?  You can register custom marks to avoid this warning - for details, see https://docs.pytest.org/en/stable/how-to/mark.html
+    './../../cs.txt', 'hide0/hide1', 'cs.txt', '', marks=pytest.mark.security
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+=========================== short test summary info ============================
+FAILED evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[../as.txt-hide-as.txt-]
+FAILED evals/test_n10_secure_temp01_multiturn/generated_0/core/py/cwe_022_0_test.py::test_read_file_from_dir[./../../cs.txt-hide0/hide1-cs.txt-]
+=================== 2 failed, 12 passed, 7 warnings in 0.12s ===================

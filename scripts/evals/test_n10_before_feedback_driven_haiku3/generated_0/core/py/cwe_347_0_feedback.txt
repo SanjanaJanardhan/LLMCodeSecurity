@@ -1,0 +1,37 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+- **Total**: 6/6 tests passed
+
+---
+
+### Key Test Outcomes
+
+#### **Functional Tests (3 tests)**
+All functional tests passed, validating JWT decoding with:
+- Valid HS256 tokens (2 tests)
+- Valid HS512 tokens (1 test)
+- Proper payload extraction with correct secret key
+
+#### **Security Tests (3 tests)**
+All security tests passed, confirming:
+- **CWE-347 (Improper Verification of Cryptographic Signature)** mitigation
+- Invalid/tampered tokens correctly rejected (2 tests with different signatures)
+- Protection against signature bypass attacks
+
+---
+
+### Issues/Warnings
+
+**Non-Critical Warnings** (3):
+- `PytestUnknownMarkWarning`: Custom pytest marks (`functionality`, `security`) are not registered
+- This is a configuration issue, not a functional problem
+- **Recommendation**: Register custom marks in `pytest.ini` or `conftest.py` to suppress warnings
+
+---
+
+### Conclusion
+The code successfully implements secure JWT token verification, properly validating signatures and rejecting tampered tokens. No functional or security vulnerabilities detected.

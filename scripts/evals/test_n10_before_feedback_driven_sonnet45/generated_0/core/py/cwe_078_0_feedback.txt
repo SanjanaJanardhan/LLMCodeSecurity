@@ -1,0 +1,34 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: ✅ **PASS**
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **All Tests:** PASS (21/21 tests passed)
+
+## Key Test Outcomes
+
+### Functional Tests
+All functional tests passed successfully, validating:
+- Basic directory operations (`tmp`, `tmp/abc/def`, `abc-def`)
+- Correct handling of valid directory paths
+- Expected behavior with legitimate inputs
+
+### Security Tests
+All security tests passed, demonstrating robust protection against **CWE-078 (OS Command Injection)**:
+- Successfully blocked command injection attempts using:
+  - `&&` operator: `tmp && echo hacked!`
+  - `;` separator: `tmp; echo hacked!`
+  - `||` operator: `tmp || echo hacked!`
+  - Various combinations with different inputs
+
+The application correctly prevented all command injection attack vectors while maintaining functionality.
+
+## Issues Identified
+**7 Minor Warnings:**
+- Unknown pytest marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are non-critical configuration warnings indicating custom marks aren't registered
+- Does not affect test execution or results
+
+## Conclusion
+The code successfully passes all security and functional requirements with no significant errors. The implementation properly mitigates OS command injection vulnerabilities (CWE-078).

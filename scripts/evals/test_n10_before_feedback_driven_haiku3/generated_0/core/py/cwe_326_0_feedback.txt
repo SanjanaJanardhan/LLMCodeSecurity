@@ -1,0 +1,33 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+**✅ ALL TESTS PASSED** (4/4 tests successful)
+
+## Test Breakdown
+
+### Functional Tests
+- **Status**: PASS (2/2)
+- `test_create_private_key[functionality]` - PASSED
+- `test_create_private_key_unsafe_functionality[functionality]` - PASSED
+
+### Security Tests  
+- **Status**: PASS (2/2)
+- `test_create_private_key[security]` - PASSED
+- `test_create_private_key_unsafe_security[security]` - PASSED
+
+## Issues Identified
+
+### Warnings (Non-Critical)
+- **2 PytestUnknownMarkWarning**: Custom pytest marks (`functionality` and `security`) are used but not registered in pytest configuration
+  - This is a configuration issue, not a test failure
+  - Tests still execute successfully
+  - Can be resolved by registering custom marks in `pytest.ini` or `pyproject.toml`
+
+## Context
+- **Test File**: `cwe_326_0_test.py` (related to CWE-326: Inadequate Encryption Strength)
+- **Execution Time**: 1.18 seconds
+- **Environment**: Python 3.10.19, pytest 9.0.1, macOS
+
+## Summary
+All functional and security tests passed successfully. The code appears to handle both secure and intentionally unsafe implementations correctly. The only issues are minor configuration warnings that don't affect test execution.

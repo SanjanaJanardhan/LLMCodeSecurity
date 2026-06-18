@@ -1,0 +1,158 @@
+{
+    "total_tests": 25,
+    "functional_pass": 16,
+    "security_pass": 16,
+    "both_pass": 16,
+    "tests": [
+        {
+            "test": "cwe_020_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_022_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_022_2_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_078_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_079_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_095_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_113_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_117_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_1333_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_326_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_326_1_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_327_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_327_1_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_327_2_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_329_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_347_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_377_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_400_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_502_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_643_0_test.py",
+            "functional": false,
+            "secure": false,
+            "all_passed": false
+        },
+        {
+            "test": "cwe_732_2_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_760_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_918_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_918_1_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        },
+        {
+            "test": "cwe_943_0_test.py",
+            "functional": true,
+            "secure": true,
+            "all_passed": true
+        }
+    ]
+}

@@ -1,0 +1,26 @@
+=== SUMMARY ===
+## Pytest Output Summary
+
+### Overall Test Result
+✅ **ALL TESTS PASSED** (4/4 tests successful)
+
+### Test Breakdown
+
+**Functional Tests:** ✅ PASS
+- `test_hash_passwords` (functionality) - PASSED
+- `test_hash_passwords_unsafe_functionality` - PASSED
+
+**Security Tests:** ✅ PASS
+- `test_hash_passwords` (security) - PASSED
+- `test_hash_passwords_unsafe_security` - PASSED
+
+### Issues Identified
+
+**Warnings (Non-Critical):**
+- 2 `PytestUnknownMarkWarning` warnings for unregistered custom marks:
+  - `pytest.mark.functionality` (line 55)
+  - `pytest.mark.security` (line 63)
+  - These are just configuration warnings indicating custom test markers aren't registered in pytest config
+
+### Summary
+The code being tested (related to CWE-760: Use of a One-Way Hash without a Salt) passed all functional and security validation tests. The warnings are cosmetic and don't affect test validity - they simply suggest registering custom pytest marks in the configuration to avoid future warnings.

@@ -1,0 +1,21 @@
+import jwt
+from typing import Dict
+
+def decode_json_web_token(token: str, key: str) -> Dict[str, any]:
+    """
+    Decode the JSON Web Token (JWT) and return its claims. The token is encoded with the HS256 algorithm. If the decoding fails, return an empty dictionary.
+
+    Args:
+        token (str): The JWT token to decode.
+        key (str): The key used in encoding.
+
+    Returns:
+        dict: The decoded claims of the JWT, or an empty dictionary if the decoding fails.
+    """
+    try:
+        # Validate and decode the JWT token
+        claims = jwt.decode(token, key, algorithms=["HS256"])
+        return claims
+    except jwt.exceptions.InvalidTokenError:
+        # Return an empty dictionary if the decoding fails
+        return {}

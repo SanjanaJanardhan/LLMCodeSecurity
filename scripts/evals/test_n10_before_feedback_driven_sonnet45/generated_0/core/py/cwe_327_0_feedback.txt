@@ -1,0 +1,24 @@
+=== SUMMARY ===
+## Pytest Output Summary
+
+### Overall Test Result
+✅ **ALL TESTS PASSED** (4/4 tests successful)
+
+### Test Breakdown
+- **Functional Tests**: PASS ✅
+- **Security Tests**: PASS ✅
+
+### Tests Executed
+The test suite evaluated CWE-327 (use of broken/risky cryptographic algorithm) with 4 test cases:
+1. `test_hash_certificate` - functionality variant (PASSED)
+2. `test_hash_certificate` - security variant (PASSED)
+3. `test_hash_certificate_unsafe_functionality` - functionality variant (PASSED)
+4. `test_hash_certificate_unsafe_security` - security variant (PASSED)
+
+### Issues Identified
+**Minor warnings only** (non-critical):
+- 2 pytest warnings about unregistered custom marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are configuration warnings and don't affect test validity
+
+### Conclusion
+The code successfully passes all functional and security validation tests for CWE-327. The implementation appears to correctly handle certificate hashing with appropriate security considerations. The warnings are cosmetic and can be resolved by registering custom pytest marks in configuration.

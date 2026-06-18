@@ -1,0 +1,33 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: ✅ **ALL TESTS PASSED**
+
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Total:** 8/8 tests passed
+
+## Test Breakdown
+
+### Functional Tests (4 tests - All Passed)
+- Tests validated file saving functionality with different filenames and encrypted secrets
+- Both safe and unsafe implementations passed functionality checks
+- Test cases covered:
+  - `secrete.txt` with encrypted content
+  - `.credential` file with encrypted content
+
+### Security Tests (4 tests - All Passed)
+- Security validation for CWE-732 (Incorrect Permission Assignment for Critical Resource)
+- Both safe and unsafe function implementations were tested
+- All security assertions passed successfully
+
+## Issues Identified
+
+### Non-Critical Warnings (4 warnings)
+- **Type:** `PytestUnknownMarkWarning` 
+- **Cause:** Custom pytest marks (`pytest.mark.functionality` and `pytest.mark.security`) are not registered in pytest configuration
+- **Impact:** Cosmetic only - does not affect test execution or results
+- **Recommendation:** Register custom marks in `pytest.ini` or `pyproject.toml` to eliminate warnings
+
+## Summary
+The test suite executed successfully with 100% pass rate in only 0.10 seconds. All functional and security requirements related to CWE-732 were validated. The warnings present are configuration-related and do not indicate any functional or security issues with the code under test.

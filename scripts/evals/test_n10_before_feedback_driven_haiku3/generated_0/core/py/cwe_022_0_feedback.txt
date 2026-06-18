@@ -1,0 +1,33 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+**✅ ALL TESTS PASSED** (14/14 tests passed)
+
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Overall Status:** PASS
+
+## Test Coverage
+
+### Functional Tests (Passed)
+Tests validated core file reading functionality:
+- ✅ Reading files from root directory (`a.txt`)
+- ✅ Reading files from subdirectories (`dir0/a.txt`, `dir0/dir1/a.txt`)
+- ✅ Handling non-existent files (`b.txt`, `c.txt`)
+- ✅ Proper content retrieval (expected: "Hello, World! This is a test file. :)")
+
+### Security Tests (Passed) 
+Tests validated protection against **CWE-022 (Path Traversal)** attacks:
+- ✅ Blocked path traversal attempts using `../` patterns (`../as.txt`)
+- ✅ Blocked complex traversal attempts (`./../../cs.txt`)
+- ✅ Both attacks correctly returned empty strings (denied access)
+
+## Issues Identified
+**Minor warnings only** (non-critical):
+- 7 warnings about unregistered pytest marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are configuration warnings that don't affect test validity
+- Can be resolved by registering custom marks in `pytest.ini` or `conftest.py`
+
+## Conclusion
+The code successfully passes all functional requirements and demonstrates proper security controls against path traversal vulnerabilities. No significant errors detected.

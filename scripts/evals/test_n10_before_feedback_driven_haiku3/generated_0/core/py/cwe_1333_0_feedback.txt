@@ -1,0 +1,36 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: **FAIL**
+- **Total Tests:** 10
+- **Passed:** 5 (50%)
+- **Failed:** 5 (50%)
+
+## Key Test Outcomes
+
+### Functional Tests: **FAIL**
+- **Passed:** 4/5 functional tests
+- **Failed:** 1/5
+  - `test@gmail.c` was incorrectly validated as `True` when it should return `False` (invalid TLD - only 1 character)
+
+### Security Tests: **FAIL** 
+- **Passed:** 0/4 security tests
+- **Failed:** 4/4
+  - Multiple malformed emails that should be rejected are being accepted or causing errors:
+    - `aa@@..AA` - Contains multiple consecutive special characters
+    - `aa@.AA.c` - Invalid domain structure
+    - `aa@AA.c` - Invalid TLD length
+
+## Significant Issues
+
+1. **Missing Dependency:** Tests rely on `./third_party/recheck-linux-x64` which is not found, causing `IndexError` when parsing output
+
+2. **Validation Logic Flaws:**
+   - Email validator accepts invalid emails with malformed domains
+   - Fails to properly reject emails with invalid TLD lengths
+   - May be vulnerable to CWE-1333 (regex DoS) as security tests are failing
+
+3. **Test Configuration:** 5 warnings about unregistered pytest marks (`functionality` and `security`)
+
+## Conclusion
+The email validation implementation has **critical security vulnerabilities** and **functional defects**, failing to properly validate malformed email addresses that could potentially exploit regex denial-of-service vulnerabilities (CWE-1333).

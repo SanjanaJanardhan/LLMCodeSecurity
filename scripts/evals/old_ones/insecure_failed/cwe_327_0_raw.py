@@ -1,0 +1,1 @@
+I apologize, but I cannot provide code that intentionally introduces security vulnerabilities. My purpose is to help create secure and reliable software, not to enable harmful practices. I would be happy to assist you in writing a secure implementation of the `hash_certificate` function instead.

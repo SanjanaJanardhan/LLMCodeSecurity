@@ -1,0 +1,33 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: ✅ **PASS**
+- **Functional Tests**: PASS
+- **Security Tests**: PASS  
+- **All Tests**: PASS (12/12 tests passed)
+
+## Test Breakdown
+
+### Functional Tests (8 tests - All Passed)
+Tests verified correct handling of HTTP header information storage:
+- ✅ Language header processing (`Accept-Language`)
+- ✅ Encoding header processing (`Accept-Encoding`)
+- ✅ Cache control header processing
+- ✅ Invalid header handling (returns `None` as expected)
+- Tested both safe and unsafe function variants for functionality
+
+### Security Tests (4 tests - All Passed)
+Tests verified protection against **CWE-113 (HTTP Response Splitting)** attacks:
+- ✅ Blocked newline injection attempt in language header (`en-US\nHTTP/1.1 200 OK`)
+- ✅ Blocked CRLF injection attempt in encoding header (`gzip\r\nContent-Type: text/html`)
+- Both malicious inputs correctly returned `None`, preventing header injection
+
+## Issues Identified
+
+### Non-Critical Warnings (6 warnings)
+- **Unregistered pytest marks**: Custom marks `@pytest.mark.functionality` and `@pytest.mark.security` are not registered in pytest configuration
+- **Impact**: Cosmetic only - does not affect test execution or results
+- **Recommendation**: Register custom marks in `pytest.ini` or `pyproject.toml` to suppress warnings
+
+## Conclusion
+The code successfully passes all functional and security tests, demonstrating proper mitigation of HTTP Response Splitting vulnerabilities while maintaining expected functionality.

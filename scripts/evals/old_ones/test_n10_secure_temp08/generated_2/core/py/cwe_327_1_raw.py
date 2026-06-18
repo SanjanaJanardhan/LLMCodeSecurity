@@ -1,0 +1,23 @@
+import hashlib
+import os
+from argon2 import PasswordHasher
+
+def get_password_hash(password: str) -> str:
+    """
+    Hash the given password securely and return the hash as a string.
+
+    Args:
+        password (str): The password to be hashed.
+
+    Returns:
+        str: The securely hashed password.
+    """
+    # Use Argon2 password hashing algorithm
+    ph = PasswordHasher()
+    try:
+        hashed_password = ph.hash(password)
+    except Exception as e:
+        # Handle any exceptions that may occur during hashing
+        raise ValueError("Error hashing the password: {}".format(e))
+
+    return hashed_password

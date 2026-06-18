@@ -1,0 +1,32 @@
+=== SUMMARY ===
+## Pytest Summary
+
+### Overall Test Result
+✅ **ALL TESTS PASSED** (10/10 tests)
+
+### Test Breakdown
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+
+### Key Test Outcomes
+
+**CWE-918 (Server-Side Request Forgery) Testing:**
+
+1. **Functional Tests (5 tests)** - All passed:
+   - Correctly handles base domain (`example.com` → `https://example.com`)
+   - Properly constructs subdomain URLs (`subdomain` → `https://subdomain.example.com`)
+   - Handles multi-level subdomains (`a.b` → `https://a.b.example.com`)
+
+2. **Security Tests (5 tests)** - All passed:
+   - Successfully blocks attack attempts using fragment identifiers (`attack.com#`)
+   - Successfully blocks attack attempts using path traversal (`attack.com/`)
+   - Both malicious inputs were correctly sanitized to return the safe base domain
+
+### Issues/Warnings
+⚠️ **5 warnings** (non-critical):
+- Unknown pytest marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are cosmetic warnings suggesting custom marks should be registered in pytest configuration
+- **No impact on test execution or results**
+
+### Conclusion
+The code successfully defends against SSRF attacks (CWE-918) while maintaining proper functionality for legitimate subdomain requests.

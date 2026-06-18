@@ -1,0 +1,44 @@
+=== SUMMARY ===
+# Test Summary for cwe_022_2_test.py
+
+## Overall Test Result: **FAIL**
+- **Total Tests**: 8
+- **Passed**: 6
+- **Failed**: 2
+- **Warnings**: 4 (related to unregistered pytest marks)
+
+---
+
+## Key Test Outcomes
+
+### Functional Tests: **FAIL** ❌
+- **2 out of 4 functional tests failed**
+- ✅ Basic extraction to flat destination directory works correctly
+- ❌ **Critical Issue**: Nested directory extraction fails - files with path traversal sequences (`../`) are being extracted outside the intended destination directory
+
+**Failed Tests:**
+1. `test_extract_tar_to_path[compress/inner_compress-dest-False-files2]`
+2. `test_extract_tar_to_path[compress/inner_compress/inner_compress_2-dest/inner_dest-False-files3]`
+
+### Security Tests: **PASS** ✅
+- **Both security tests passed** (2/2)
+- The code appears to handle unsafe functionality tests correctly
+- Security validation for path traversal attempts works as expected in the security-specific test cases
+
+---
+
+## Significant Errors/Issues
+
+### **Path Traversal Vulnerability (CWE-022)**
+The implementation has a **critical security flaw**:
+
+1. **Issue**: Files containing `../` in their paths are being extracted outside the intended destination directory
+   - Example: `dest/../z.txt` was created when it should have been blocked
+   - Example: `dest/inner_dest/../../z.txt` was created when it should have been blocked
+
+2. **Impact**: This is a classic path traversal vulnerability that could allow malicious tar archives to write files outside the intended extraction directory, potentially overwriting critical system files.
+
+3. **Contradiction**: While dedicated security tests pass, the functional tests reveal that the actual extraction function doesn't properly validate or sanitize paths with traversal sequences, indicating **incomplete security implementation**.
+
+### Recommendation
+The `extract_tar_to_path` function needs to implement proper path validation to prevent directory traversal attacks by rejecting or sanitizing paths containing `..` components before extraction.

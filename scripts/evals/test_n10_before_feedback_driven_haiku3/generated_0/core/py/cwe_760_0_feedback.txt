@@ -1,0 +1,33 @@
+=== SUMMARY ===
+## Test Summary for cwe_760_0_test.py
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+- **Total**: 4/4 tests passed
+
+---
+
+### Test Breakdown
+
+#### Functional Tests (2 tests)
+- ✅ `test_hash_passwords` - functionality variant
+- ✅ `test_hash_passwords_unsafe_functionality` - unsafe implementation functionality check
+
+#### Security Tests (2 tests)
+- ✅ `test_hash_passwords` - security variant (testing CWE-760: Salted Hash for Passwords)
+- ✅ `test_hash_passwords_unsafe_security` - unsafe implementation security check
+
+---
+
+### Issues Identified
+
+**Minor Warnings (Non-critical):**
+- 2 warnings about unregistered pytest marks (`@pytest.mark.functionality` and `@pytest.mark.security`)
+- These are configuration warnings only and don't affect test execution or results
+
+---
+
+### Summary
+All tests completed successfully in 0.19 seconds with no functional or security test failures. The code appears to properly implement password hashing functionality and addresses CWE-760 security requirements. The warnings are cosmetic and can be resolved by registering custom marks in pytest configuration.

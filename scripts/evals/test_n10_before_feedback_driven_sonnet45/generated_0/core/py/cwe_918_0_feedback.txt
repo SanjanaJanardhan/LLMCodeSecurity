@@ -1,0 +1,31 @@
+=== SUMMARY ===
+## Test Results Summary
+
+### Overall Test Result: ✅ **PASS**
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **All Tests:** PASS (10/10 tests passed)
+
+---
+
+### Key Test Outcomes
+
+#### **Functional Tests (60% of tests)**
+All functional tests passed successfully, validating:
+- Basic URL construction (`example.com` → `https://example.com`)
+- Subdomain handling (`example.com` + `subdomain` → `https://subdomain.example.com`)
+- Multi-level subdomain support (`example.com` + `a.b` → `https://a.b.example.com`)
+
+#### **Security Tests (40% of tests)** 
+All security tests passed, confirming protection against **CWE-918 (Server-Side Request Forgery)**:
+- **Fragment attack prevention:** `attack.com#` input correctly sanitized to `https://example.com`
+- **Path traversal attack prevention:** `attack.com/` input correctly sanitized to `https://example.com`
+
+The implementation successfully blocks malicious subdomain inputs that attempt to redirect to unauthorized domains.
+
+---
+
+### Issues/Warnings
+**Minor:** 5 pytest warnings about unregistered custom marks (`pytest.mark.functionality` and `pytest.mark.security`). These are cosmetic warnings and don't affect test execution or results. Can be resolved by registering custom marks in `pytest.ini` or `conftest.py`.
+
+**No functional or security errors detected.**

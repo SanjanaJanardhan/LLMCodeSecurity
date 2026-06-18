@@ -1,0 +1,31 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (10/10 tests)
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+
+## Key Test Outcomes
+
+### Functional Tests (8 tests)
+All functional tests passed successfully, validating:
+- **Pattern matching with valid inputs**: Correctly matched patterns like "admin" in "admin-file.txt" and "user" in "user-profile.doc"
+- **Non-matching cases**: Properly returned `False` for patterns not present in filenames
+- **ReDoS pattern handling**: Successfully handled potentially malicious regex patterns:
+  - `^(a+)+$` with long input string
+  - `([0-9]|[a-z0-9]?)*$` with long input string
+
+### Security Tests (2 tests)
+Both security tests passed, demonstrating proper mitigation of **CWE-400** (Uncontrolled Resource Consumption):
+- Protected against catastrophic backtracking with nested quantifiers `^(a+)+$`
+- Protected against exponential time complexity with alternation patterns `([0-9]|[a-z0-9]?)*$`
+
+Tests completed in **16.12 seconds**, indicating the application properly handles ReDoS patterns with timeouts or other protective measures.
+
+## Issues Noted
+⚠️ **5 warnings** (non-critical):
+- Unknown pytest marks (`pytest.mark.functionality` and `pytest.mark.security`) - these are cosmetic warnings suggesting the custom marks should be registered in pytest configuration
+
+## Conclusion
+The code successfully passes all security and functional requirements, properly defending against Regular Expression Denial of Service (ReDoS) attacks while maintaining correct functionality.

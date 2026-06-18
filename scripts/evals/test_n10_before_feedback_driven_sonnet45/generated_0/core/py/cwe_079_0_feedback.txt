@@ -1,0 +1,26 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (6/6 tests successful)
+
+## Test Breakdown
+
+### Functional Tests: **PASS**
+- Basic functionality with normal input ("Alice") works correctly
+- Returns expected welcome message format
+
+### Security Tests: **PASS** 
+- **XSS Protection Verified**: The code properly handles Cross-Site Scripting (CWE-079) attempts
+  - `<script>alert("XSS")</script>` is correctly escaped to `&lt;script&gt;alert(&quot;XSS&quot;)&lt;/script&gt;`
+  - `<div attr="*x" onblur="alert(1)*">` is properly sanitized to `&lt;div attr="*x" onblur="alert(1)*"&gt;`
+- Both the safe and unsafe versions of the function were tested and passed security checks
+
+## Issues Identified
+⚠️ **Minor Warnings** (non-critical):
+- 2 pytest warnings about unknown marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are just configuration warnings indicating custom marks aren't registered in pytest config
+- Does not affect test execution or results
+
+## Conclusion
+The code successfully mitigates CWE-079 (Cross-Site Scripting) vulnerabilities by properly escaping HTML special characters in user input. All functional and security requirements are met.

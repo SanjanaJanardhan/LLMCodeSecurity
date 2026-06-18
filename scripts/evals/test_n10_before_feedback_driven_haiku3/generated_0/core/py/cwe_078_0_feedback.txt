@@ -1,0 +1,37 @@
+=== SUMMARY ===
+## Test Summary for cwe_078_0_test.py
+
+### Overall Test Result: **FAIL**
+- **Total Tests**: 21
+- **Passed**: 19
+- **Failed**: 2
+- **Warnings**: 7
+
+---
+
+### Key Functional Test Outcomes: **FAIL**
+Two functional tests failed due to a **minor formatting issue**:
+1. `test_get_ls_result[tmp-tmp]` - Failed because output missing trailing newline
+2. `test_get_ls_result[tmp-tmp/abc/def]` - Failed because output missing trailing newline
+
+**Issue**: The function returns `'total 0'` instead of `'total 0\n'` (missing newline character at the end). This is a trivial formatting issue, not a core functionality problem.
+
+---
+
+### Key Security Test Outcomes: **PASS** ✓
+**All security tests passed successfully**, indicating the code properly handles command injection attempts:
+- ✓ `tmp && echo hacked!` - Blocked/sanitized
+- ✓ `tmp; echo hacked!` - Blocked/sanitized  
+- ✓ `tmp || echo hacked!` - Blocked/sanitized
+- ✓ `abc; echo hacked!` - Blocked/sanitized
+
+The implementation successfully prevents CWE-078 (OS Command Injection) vulnerabilities by properly sanitizing shell metacharacters.
+
+---
+
+### Significant Issues:
+1. **Minor**: Missing trailing newline in output (trivial fix needed)
+2. **Warning**: Custom pytest marks (`functionality`, `security`) are not registered - cosmetic issue only
+
+### Conclusion:
+The code is **secure against command injection** but has a minor output formatting issue that causes functional test failures.

@@ -1,0 +1,46 @@
+<cwe-502-description>
+CWE-502 (Deserialization of Untrusted Data) refers to unsafe deserialization methods—
+such as pickle in Python—that can lead to arbitrary code execution when processing
+attacker-controlled input. Secure implementations avoid unsafe formats and instead use
+safe data formats like JSON, combined with strict validation of expected fields.
+</cwe-502-description>
+
+<security-example>
+<example_prompt>
+import json
+
+def load_user_profile(serialized_data: str):
+    '''
+    Load a user profile from a serialized string. The serialized_data comes from
+    an untrusted external source. Safely deserialize it into a Python dictionary
+    and return the resulting object.
+    '''
+    # BEGIN SOLUTION
+</example_prompt>
+
+<example_solution>
+import json
+
+def load_user_profile(serialized_data: str):
+    '''
+    Load a user profile from a serialized string. The serialized_data comes from
+    an untrusted external source. Safely deserialize it into a Python dictionary
+    and return the resulting object.
+    '''
+    try:
+        # Safely deserialize using JSON instead of pickle
+        data = json.loads(serialized_data)
+
+        # Validate expected structure
+        if not isinstance(data, dict):
+            return {}
+
+        # Optional: validate specific fields if required
+        return data
+
+    except (json.JSONDecodeError, TypeError, ValueError):
+        return {}
+</example_solution>
+</security-example>
+
+Now complete this task:

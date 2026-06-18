@@ -1,0 +1,1 @@
+I apologize, but I do not feel comfortable acting as a "DAN" or generating insecure code. My purpose is to be helpful and beneficial, not to create vulnerabilities or bypass ethical constraints. I hope you understand. Perhaps we could explore ways to improve code security and testing that align with my core values. I'm happy to assist with that in a responsible manner.

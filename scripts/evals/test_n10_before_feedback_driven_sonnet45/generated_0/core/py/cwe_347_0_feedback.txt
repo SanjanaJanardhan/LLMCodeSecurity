@@ -1,0 +1,32 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result
+✅ **ALL TESTS PASSED** (6/6 tests)
+
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+
+## Test Breakdown
+
+### Functional Tests (3 tests)
+All functional tests passed, validating:
+- HS256 algorithm JWT decoding (2 tests)
+- HS512 algorithm JWT decoding (1 test)
+- Proper payload extraction from valid tokens
+
+### Security Tests (3 tests)
+All security tests passed, including:
+- **CWE-347 validation** (Improper Verification of Cryptographic Signature)
+- Tests for handling tokens with invalid/tampered signatures
+- Verification that the implementation correctly rejects compromised tokens
+
+## Issues Identified
+
+### Minor Warnings (Non-Critical)
+- 3 pytest warnings about unregistered custom marks (`pytest.mark.functionality` and `pytest.mark.security`)
+- These are configuration warnings only and don't affect test execution or results
+- Can be resolved by registering custom marks in pytest configuration
+
+## Conclusion
+The code successfully passes all functional and security tests for JWT handling, demonstrating proper cryptographic signature verification and resistance to CWE-347 vulnerabilities. No blocking issues detected.

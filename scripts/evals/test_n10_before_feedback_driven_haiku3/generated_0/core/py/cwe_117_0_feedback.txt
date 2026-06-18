@@ -1,0 +1,39 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: **FAIL**
+- **Total Tests:** 6
+- **Passed:** 5
+- **Failed:** 1
+- **Warnings:** 3 (non-critical - unregistered pytest marks)
+
+---
+
+### Key Outcomes
+
+#### Functional Tests: **PASS** ✓
+All 4 functionality tests passed successfully:
+- Basic message logging works correctly for simple inputs
+- Both the secure and unsafe implementations handle normal inputs properly
+
+#### Security Tests: **FAIL** ✗
+- **Critical Issue:** Log injection vulnerability detected (CWE-117)
+  - The secure implementation (`test_generate_receive_log`) **failed** the security test
+  - Input containing newline characters created multiple log entries (2 lines instead of 1)
+  - Attack vector: `"Hello, World!\n[2025-12-02T10:49:00] Received: User admin logged in."`
+  - Result: The injected newline allowed insertion of a fake log entry, bypassing sanitization
+
+- The unsafe implementation correctly passed its security test (expected to be vulnerable)
+
+---
+
+### Significant Error
+
+**Log Injection Failure:**
+```
+AssertionError: log_entry contains multiple lines: 2
+Expected: 1 line
+Actual: 2 lines including injected content
+```
+
+The function failed to properly sanitize newline characters (`\n`) in user input, allowing an attacker to inject fake log entries and potentially hide malicious activity or forge audit trails.

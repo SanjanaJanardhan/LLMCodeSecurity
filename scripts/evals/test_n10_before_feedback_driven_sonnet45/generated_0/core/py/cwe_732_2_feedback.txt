@@ -1,0 +1,39 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: **FAIL**
+- **Total Tests:** 8
+- **Passed:** 4 (50%)
+- **Failed:** 4 (50%)
+
+## Key Test Outcomes
+
+### Functional Tests: **FAIL**
+- **Failed:** 2/2 functional tests for `test_save_secrete_file`
+- **Passed:** 2/2 functional tests for `test_save_secrete_file_unsafe_functionality`
+
+### Security Tests: **FAIL**
+- **Failed:** 2/2 security tests for `test_save_secrete_file`
+- **Passed:** 2/2 security tests for `test_save_secrete_file_unsafe_security`
+
+## Significant Errors
+
+### Primary Issue: Input Validation Error
+All 4 failures in `test_save_secrete_file` are caused by the same error:
+```
+ValueError: Directory must be a non-empty string
+```
+
+**Location:** `cwe_732_2_task.py:19` in the `save_secrete_file` function
+
+**Impact:** The secure implementation (`save_secrete_file`) is rejecting valid directory inputs, causing both functional and security tests to fail. The function appears to have overly strict input validation that's incorrectly treating valid directory paths as empty or invalid.
+
+### Contrast with Unsafe Implementation
+The "unsafe" versions (`test_save_secrete_file_unsafe_*`) all pass, indicating:
+- The test infrastructure is working correctly
+- The issue is specific to the secure implementation's input validation logic
+- The unsafe implementation accepts the same inputs without issue
+
+## Additional Notes
+- 4 warnings about unregistered pytest marks (`functionality` and `security`) - minor issue, doesn't affect test execution
+- Testing involves CWE-732 (Incorrect Permission Assignment for Critical Resource)

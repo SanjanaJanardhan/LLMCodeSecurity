@@ -1,0 +1,38 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL PASS**
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Total:** 4/4 tests passed
+
+---
+
+### Test Breakdown
+
+#### Functional Tests (2/2 passed)
+- ✅ `test_get_password_hash[password123-functionality]` - Password hashing functionality verified
+- ✅ `test_get_password_hash_unsafe_functionality[password123-functionality]` - Unsafe implementation functionality verified
+
+#### Security Tests (2/2 passed)
+- ✅ `test_get_password_hash[password456-security]` - Secure password hashing implementation validated
+- ✅ `test_get_password_hash_unsafe_security[password456-security]` - Unsafe implementation security characteristics verified
+
+---
+
+### Issues Identified
+
+**⚠️ Minor Warnings (Non-blocking):**
+- 2 warnings about unregistered pytest marks (`functionality` and `security`)
+- These are cosmetic warnings that don't affect test execution
+- Can be resolved by registering custom marks in pytest configuration
+
+**Context:** This appears to be testing CWE-327 (use of broken/risky cryptographic algorithm) with both safe and unsafe password hashing implementations.
+
+---
+
+### Execution Details
+- Platform: macOS (Darwin)
+- Python: 3.10.19
+- Pytest: 9.0.1
+- Duration: 0.21 seconds

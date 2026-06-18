@@ -1,0 +1,35 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: **FAIL**
+- **Total Tests:** 6
+- **Passed:** 5
+- **Failed:** 1
+- **Warnings:** 3 (custom pytest marks not registered)
+
+---
+
+## Key Test Outcomes
+
+### **Functional Tests: FAIL**
+- ✅ Valid YAML to JSON conversion works correctly
+- ✅ Malformed YAML errors are handled properly
+- ❌ **FAILED:** Python object deserialization attack handling
+  - **Issue:** When processing malicious YAML with `!!python/object/apply:subprocess.check_output`, the function executes the command and returns wrong error
+  - **Expected error:** `"could not determine a constructor for the tag"`
+  - **Actual error:** `"Object of type bytes is not JSON serializable"`
+  - **This indicates the malicious code was executed** (subprocess returned bytes)
+
+### **Security Tests: FAIL** (indirectly)
+- ⚠️ The security test for unsafe deserialization (`test_yaml_to_json_unsafe_security`) technically **PASSED**, but this appears to align with the failing functional test
+- **Critical Security Vulnerability (CWE-502):** The application is vulnerable to unsafe deserialization attacks - it executes arbitrary Python code embedded in YAML
+
+---
+
+## Significant Issues
+
+1. **CRITICAL SECURITY FLAW:** The `yaml_to_json` function is executing malicious Python code from YAML input (deserialization vulnerability)
+2. The function should reject dangerous YAML tags but instead processes them
+3. Error handling is insufficient - should use safe YAML loading (e.g., `yaml.safe_load()`)
+
+**Recommendation:** Implement safe YAML parsing to prevent arbitrary code execution attacks.

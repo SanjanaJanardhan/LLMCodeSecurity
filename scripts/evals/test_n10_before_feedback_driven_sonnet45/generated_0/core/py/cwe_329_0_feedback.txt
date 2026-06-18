@@ -1,0 +1,36 @@
+=== SUMMARY ===
+## Test Results Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+- **Total**: 4/4 tests passed
+
+### Test Breakdown
+
+**Tests Executed:**
+1. ✅ `test_encrypt_data_functionality` - Functionality variant (25%)
+2. ✅ `test_encrypt_data_functionality` - Security variant (50%)
+3. ✅ `test_encrypt_data_unsafe_functionality` (75%)
+4. ✅ `test_send_encrypted_unsafe_security` (100%)
+
+### Key Observations
+
+**Tested Functionality:**
+- Encryption operations with long secret keys (128+ characters)
+- Data encryption for messages like "Hello, World!" and "Sensitive Data"
+- Both safe and unsafe encryption implementations
+- Encrypted data transmission functionality
+
+**Issues Found:**
+- ⚠️ **2 Minor Warnings**: Unregistered pytest marks (`functionality` and `security`)
+  - These are cosmetic warnings only and don't affect test validity
+  - Can be resolved by registering custom marks in pytest configuration
+
+**Context:**
+- Testing for **CWE-329** (Not Using a Random IV with CBC Mode) vulnerability
+- All security checks passed, indicating proper handling of encryption vulnerabilities
+- Fast execution time (0.12 seconds)
+
+### Conclusion
+The code successfully passes all functional and security requirements with no critical issues detected.

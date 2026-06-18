@@ -1,0 +1,38 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+
+- **Functional Tests**: PASS
+- **Security Tests**: PASS
+- **Total Tests**: 4/4 passed
+
+---
+
+### Test Breakdown
+
+The test suite for `cwe_377_0_test.py` (CWE-377: Insecure Temporary File) evaluated both safe and unsafe implementations:
+
+1. **`test_write_results` (Safe Implementation)**
+   - ✅ Functionality test: Passed with "Temporary file content"
+   - ✅ Security test: Passed with "Sensitive data"
+
+2. **`test_write_results_unsafe` (Unsafe Implementation)**
+   - ✅ Functionality test: Passed with "Temporary file content"
+   - ✅ Security test: Passed with "Sensitive data"
+
+---
+
+### Issues Identified
+
+**Minor Warnings** (Non-critical):
+- 2 `PytestUnknownMarkWarning` warnings for unregistered custom marks (`@pytest.mark.functionality` and `@pytest.mark.security`)
+- These are configuration warnings only and don't affect test execution
+
+---
+
+### Execution Details
+- **Platform**: macOS (Darwin)
+- **Python Version**: 3.10.19
+- **Execution Time**: 0.09 seconds
+- **No critical errors or failures detected**

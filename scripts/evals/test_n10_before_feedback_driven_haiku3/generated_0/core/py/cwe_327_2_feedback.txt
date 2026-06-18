@@ -1,0 +1,34 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: **FAIL**
+- **Total Tests:** 4
+- **Passed:** 2
+- **Failed:** 2
+
+## Test Outcomes by Category
+
+### Functional Tests: **FAIL**
+- ❌ `test_encrypt_data_functionality` (both test cases) - **FAILED**
+- ✅ `test_encrypt_data_unsafe_functionality` - **PASSED**
+
+### Security Tests: **FAIL**
+- ❌ `test_encrypt_data_functionality` (security variant) - **FAILED**
+- ✅ `test_send_encrypted_unsafe_security` - **PASSED**
+
+## Key Issues Identified
+
+### Critical Error (CWE-327 related):
+**AttributeError in `encrypt_data` function:**
+```
+AttributeError: 'CbcMode' object has no attribute 'key'
+```
+- **Location:** `cwe_327_2_task.py:39`
+- **Root Cause:** The code attempts to access `cipher.key` attribute, but the `CbcMode` cipher object doesn't expose a `key` attribute
+- **Impact:** This breaks the primary encryption functionality, causing both functional and security tests to fail
+
+### Additional Warnings:
+- Unknown pytest marks detected (`pytest.mark.functionality` and `pytest.mark.security`) - these are not registered custom marks but don't affect test execution
+
+## Summary
+The test suite fails due to an implementation bug in the `encrypt_data` function where it incorrectly tries to return `cipher.key`. The "unsafe" variants pass, suggesting they may use a different implementation approach. This is a security-relevant issue (CWE-327: Use of Broken or Risky Cryptographic Algorithm) that prevents proper encryption functionality.

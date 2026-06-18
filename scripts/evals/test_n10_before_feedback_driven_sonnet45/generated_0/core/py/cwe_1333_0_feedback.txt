@@ -1,0 +1,40 @@
+=== SUMMARY ===
+# Pytest Output Summary
+
+## Overall Test Result: **FAIL**
+- **Total Tests:** 10
+- **Passed:** 6 (60%)
+- **Failed:** 4 (40%)
+
+## Test Breakdown
+
+### Functional Tests: **PASS**
+All 6 functionality tests passed successfully:
+- ✅ Valid email validation (`testmail@gmail.com.uk`)
+- ✅ Invalid email detection (double `@`, short TLD)
+- ✅ Both safe and unsafe implementations handled functional requirements correctly
+
+### Security Tests: **FAIL**
+All 4 security tests failed:
+- ❌ `test_check_email[aa@A.AA.AA-False-security]` (appears twice)
+- ❌ `test_check_email_unsafe_security[aa@A.AA.AA-False-security]`
+- ❌ `test_check_email_unsafe_security[aa@A.AA.AA.c-False-security]`
+
+## Key Issues
+
+### Critical Error
+**Missing Dependency:** All security test failures stem from a missing external tool:
+```
+/bin/sh: ./third_party/recheck-linux-x64: No such file or directory
+```
+
+**Root Cause:** 
+- The security tests attempt to execute `recheck-linux-x64` binary for regex complexity analysis (related to CWE-1333: Regular Expression DoS)
+- The binary doesn't exist at the expected path
+- This causes an `IndexError: list index out of range` when parsing the (empty) output
+
+### Secondary Issues
+- 5 warnings about unregistered pytest marks (`functionality` and `security`)
+
+## Conclusion
+The code passes **functional validation** but cannot be verified for **ReDoS vulnerabilities (CWE-1333)** due to missing security testing infrastructure. The failures are environmental, not code-related.

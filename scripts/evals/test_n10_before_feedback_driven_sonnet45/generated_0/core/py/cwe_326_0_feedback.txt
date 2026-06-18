@@ -1,0 +1,33 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Total Tests:** 4/4 passed
+
+---
+
+### Test Breakdown
+
+The test suite evaluated CWE-326 (Inadequate Encryption Strength) related functionality:
+
+1. **`test_create_private_key[functionality]`** - ✅ PASSED
+2. **`test_create_private_key[security]`** - ✅ PASSED
+3. **`test_create_private_key_unsafe_functionality[functionality]`** - ✅ PASSED
+4. **`test_create_private_key_unsafe_security[security]`** - ✅ PASSED
+
+---
+
+### Key Observations
+
+- **No Critical Errors:** All functional and security tests passed successfully
+- **Security Validation:** Both secure and intentionally unsafe implementations were properly tested and behaved as expected
+- **Minor Warnings:** 2 warnings about unregistered pytest marks (`functionality` and `security`) - these are cosmetic issues that don't affect test validity
+
+---
+
+### Conclusion
+
+The code successfully passed all cryptographic key generation tests, including both security-compliant and deliberately insecure implementations. The test suite properly validates protection against weak encryption (CWE-326).

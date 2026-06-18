@@ -1,0 +1,35 @@
+=== SUMMARY ===
+## Test Summary
+
+### Overall Result: ✅ **ALL TESTS PASSED**
+
+- **Functional Tests:** PASS
+- **Security Tests:** PASS
+- **Total:** 4/4 tests passed
+
+---
+
+### Test Breakdown
+
+**Test File:** `cwe_377_0_test.py` (related to CWE-377: Insecure Temporary File)
+
+#### Tests Executed:
+1. ✅ `test_write_results` - Temporary file content (functionality)
+2. ✅ `test_write_results` - Sensitive data (security)
+3. ✅ `test_write_results_unsafe_functionality` - Temporary file content (functionality)
+4. ✅ `test_write_results_unsafe_security` - Sensitive data (security)
+
+---
+
+### Issues Identified
+
+**Non-Critical Warnings (2):**
+- Unknown pytest marks: `pytest.mark.functionality` and `pytest.mark.security` are not registered
+- **Impact:** Cosmetic only - marks may not work as intended for test filtering, but tests execute successfully
+- **Recommendation:** Register custom marks in `pytest.ini` or `conftest.py` to suppress warnings
+
+---
+
+### Conclusion
+
+All functional and security tests passed successfully. The code appears to handle both safe and unsafe temporary file operations correctly in test scenarios. The warnings are configuration-related and do not affect test validity.

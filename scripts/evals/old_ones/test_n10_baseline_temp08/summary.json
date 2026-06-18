@@ -1,0 +1,75 @@
+{
+    "total_folders": 10,
+    "results_per_folder": [
+        {
+            "folder": "generated_0",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_1",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_2",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_3",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_4",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_5",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_6",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_7",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_8",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        },
+        {
+            "folder": "generated_9",
+            "total_tests": 25,
+            "functional": 0,
+            "secure": 0,
+            "both": 0
+        }
+    ]
+}
